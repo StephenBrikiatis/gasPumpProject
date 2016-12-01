@@ -1,1 +1,2 @@
 c:\users\stephen\documents\visual studio 2015\Projects\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.exe.config
+C:\Users\stephen.brikiatis\Documents\Visual Studio 2015\Projects\gasPumpProject\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.exe.config
