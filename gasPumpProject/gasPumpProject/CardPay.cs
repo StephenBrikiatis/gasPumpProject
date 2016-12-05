@@ -11,9 +11,9 @@ namespace gasPumpProject
         FuelPump parent;
         public int usePump()
         {
-            Double cashAmount = 0;
-            Double amountOfGas;
-            int typeOfGas, typeOfPayment = 0;
+            float cashAmount = 0;
+            float amountOfGas =0;
+            int typeOfGas =0, typeOfPayment = 0;
             bool loopEnd = false, hold;
 
             while(loopEnd == false)
@@ -28,13 +28,13 @@ namespace gasPumpProject
                 switch (typeOfGas)
                 {
                     case 1:
-                        cashAmount = amountOfGas * parent.;
+                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
                         break;
                     case 2:
-                        cashAmount = amountOfGas * 3.05;
+                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
                         break;
                     case 3:
-                        cashAmount = amountOfGas * 3.35;
+                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
                         break;
                     default:
                         Console.Out.WriteLine("That is not a type of fuel, choose a type of gas.");
@@ -50,7 +50,10 @@ namespace gasPumpProject
             {
                 hold = true;
             }
-            parent.
+
+            amountOfGas = parent.getCurrentGas(typeOfGas) - amountOfGas;
+
+            parent.setTankStatusGas(amountOfGas, typeOfGas);
             parent.store.recievePumpPay(cashAmount, ref hold);
             return 0;
         }
