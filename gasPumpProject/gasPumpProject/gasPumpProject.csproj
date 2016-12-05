@@ -46,6 +46,7 @@
     <Compile Include="CardPay.cs" />
     <Compile Include="Diagnostic.cs" />
     <Compile Include="FuelPump.cs" />
+    <Compile Include="FuelTank.cs" />
     <Compile Include="Prepay.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

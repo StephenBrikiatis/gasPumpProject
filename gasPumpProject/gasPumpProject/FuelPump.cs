@@ -13,7 +13,7 @@ namespace gasPumpProject
         PumpState state;
         bool inUse;
         int prepaid;
-        fuelTank tankStatus[];
+        FuelTank tankStatus[3];
 
         public void customerUP()
         {
@@ -28,6 +28,11 @@ namespace gasPumpProject
         public void usePump()
         {
 
+        }
+
+        public void setTankStatusGas(int amount, int type)
+        {
+            tankStatus[]
         }
     }
 }

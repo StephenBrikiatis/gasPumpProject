@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class UI
+    class FuelTank
     {
-        Store store;
-        
-
-        public void mainInterface()
-        {
-            
-        }
+        string fuelType;
+        int octane;
+        float pricePerGal;
+        float galsRemaining;
     }
 }

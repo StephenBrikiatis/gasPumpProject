@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class PumpState
+    abstract class PumpState
     {
-        private DBInterface records;
 
-        public PumpState()
+        public abstract void usePump()
     }
 }
