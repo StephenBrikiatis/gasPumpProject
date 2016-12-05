@@ -1,7 +1,0 @@
-c:\users\stephen\documents\visual studio 2015\Projects\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.exe.config
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.exe.config
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\obj\Debug\gasPumpProject.csprojResolveAssemblyReference.cache
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.exe
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\bin\Debug\gasPumpProject.pdb
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\obj\Debug\gasPumpProject.exe
-C:\Users\john.houk\Documents\GitHub\gasPumpProject\gasPumpProject\gasPumpProject\obj\Debug\gasPumpProject.pdb
