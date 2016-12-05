@@ -8,5 +8,9 @@ namespace gasPumpProject
 {
     class Prepay
     {
+        public void usePump()
+        {
+
+        }
     }
 }
