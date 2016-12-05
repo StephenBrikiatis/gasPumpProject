@@ -9,11 +9,11 @@ namespace gasPumpProject
 
     class FuelPump
     {
-        Store store;
+        public Store store;
         PumpState state;
         bool inUse;
         int prepaid;
-        FuelTank tankStatus[3];
+        FuelTank[] tankStatus = new FuelTank[3];
 
         public void customerUP()
         {
@@ -30,9 +30,19 @@ namespace gasPumpProject
 
         }
 
-        public void setTankStatusGas(int amount, int type)
+        public void setTankStatusGas(float amount, int type)
         {
-            tankStatus[]
+            tankStatus[type].setGallons(amount);
+        }
+
+        public float getCurrentGas(int tank)
+        {
+            return tankStatus[tank].getGallons();
+        }
+
+        public float getPrice(int tank)
+        {
+            return tankStatus[tank].getPrice();
         }
     }
 }

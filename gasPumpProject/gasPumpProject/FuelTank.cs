@@ -9,8 +9,37 @@ namespace gasPumpProject
     class FuelTank
     {
         string fuelType;
-        int octane;
         float pricePerGal;
         float galsRemaining;
+
+        public void setFuelType(string type)
+        {
+            fuelType = type;
+        }
+
+        public void setPrice(float price)
+        {
+            pricePerGal = price;
+        }
+
+        public void setGallons(float gallon)
+        {
+            galsRemaining = gallon;
+        }
+
+        public string getType()
+        {
+            return fuelType;
+        }
+
+        public float getPrice()
+        {
+            return pricePerGal;
+        }
+
+        public float getGallons()
+        {
+            return galsRemaining;
+        }
     }
 }
