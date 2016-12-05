@@ -8,20 +8,19 @@ namespace gasPumpProject
 {
     class Store
     {
-        private int storeID { set; get; }
-        public cashRegister register { private set; get; }
-        public FuelPump[] pumps { private set; get; }
-        private float currentAccounts { set; get; }
-        private readonly DBInterface records;
+        int storeID;
+        cashRegister register;
+        FuelPump[] pumps;
+        float currentAccounts;
+        DBInterface records;
         Employee[] employees;
 
-        public int receivePumpPay(float amnt, ref bool hold, int transactionType)
+        public int receivePumpPay(float amnt, bool hold, int transactionType)
         {
             currentAccounts += amnt;
             if (hold)
                 hold = false;
-
-            return (int)function.success;
+            
         }
     }
 }
