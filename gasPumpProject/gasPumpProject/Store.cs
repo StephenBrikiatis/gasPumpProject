@@ -8,12 +8,12 @@ namespace gasPumpProject
 {
     class Store
     {
-        int storeID;
-        cashRegister register;
-        FuelPump[] pumps;
-        float currentAccounts;
-        DBInterface records;
-        Employee[] employees;
+        private int storeID;
+        public cashRegister register { get; private set; }
+        public FuelPump[] pumps { get; private set; }
+        private float currentAccounts { get; set; }
+        private readonly DBInterface records { get; set; }
+        public Employee[] employees { ;
 
         public int receivePumpPay(float amnt, ref bool hold, int transactionType)
         {
