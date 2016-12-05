@@ -1,7 +1,3 @@
 *
 !*.cs
 *.csproj
-gasPumpProject/gasPumpProject.v12.suo
-gasPumpProject/gasPumpProject/gasPumpProject.csproj
-*.csproj
-gasPumpProject/gasPumpProject/obj/Debug/gasPumpProject.pdb
