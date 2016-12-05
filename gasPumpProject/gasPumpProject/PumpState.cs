@@ -9,6 +9,6 @@ namespace gasPumpProject
     abstract class PumpState
     {
 
-        public abstract void usePump()
+        public abstract void usePump();
     }
 }

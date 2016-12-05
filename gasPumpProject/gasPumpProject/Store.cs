@@ -15,7 +15,7 @@ namespace gasPumpProject
         DBInterface records;
         Employee[] employees;
 
-        public int receivePumpPay(float amnt, bool hold, int transactionType)
+        public int receivePumpPay(float amnt, ref bool hold, int transactionType)
         {
             currentAccounts += amnt;
             if (hold)

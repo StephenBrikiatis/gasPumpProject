@@ -23,17 +23,19 @@ namespace gasPumpProject
         //alerts store to the transaction so store can update its records
         public int payForFuel(int targetPump, int paymentAmnt)
         {
+            //no account hold with cash payments
+            bool hold = false;
             //cannot pay at register if no employee is logged in
             if (currentUser == null)
                 return (int)function.failure;
             //update cash in register to reflect payment
             currentCash += paymentAmnt;
             //alert store to transaction so database can be updated
-            store.receivePumpPay(paymentAmnt);
+            store.receivePumpPay(paymentAmnt, ref hold, (int)pumpState.cash);
             //set the state of the chosen pump and the prepayment amount
-            store.fuelPumps[targetPump].prepaid.set(paymentAmnt);
-            store.fuelPumps[targetPump].setState(1);
-            return true;
+            store.pumps[targetPump].prepaid.set(paymentAmnt);
+            store.pumps[targetPump].setState(1);
+            return (int)function.success;
         }
 
         //function to log in a new employee
