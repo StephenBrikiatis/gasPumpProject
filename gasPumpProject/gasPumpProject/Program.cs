@@ -1,4 +1,16 @@
-﻿using System;
+/*Author: John Houk Stephen Brikiatis
+Class:  CSI-340-01
+Assignment: Semester project
+Date Assigned: 09/16/16
+Due Date: 12/05/16
+
+Description: This file is the main loop of the program.
+
+Certification of Authenticity:
+We certify that this assignment is entirely our own work.
+*/﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
