@@ -45,6 +45,7 @@ namespace gasPumpProject
             else
                 cashOrCard = "CASH";
             accounts.WriteLine("{0}, {1}, {2}", cashOrCard, amnt, currentAccounts);
+            accounts.Flush();
             return;
         }
 
