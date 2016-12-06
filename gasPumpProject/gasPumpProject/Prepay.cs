@@ -8,9 +8,20 @@ namespace gasPumpProject
 {
     class Prepay : PumpState
     {
-        public void usePump()
+        FuelPump parent;
+        public Prepay(FuelPump pump)
         {
+            parent = pump;
+        }
+        public override void usePump()
+        {
+            Console.WriteLine("ERR: Wrong State");
+            return;
+        }
 
+        public override float usePump(int paymentType, int typeOfGas, float amountOfGas)
+        {
+            return 0;
         }
     }
 }

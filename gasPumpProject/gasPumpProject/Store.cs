@@ -38,14 +38,10 @@ namespace gasPumpProject
             return (int)function.success;
         }
 
-        //calls pay for fuel on the appropriate register for the store
-        public int prePayPump(float amnt, int pumpID){
-            return register.payForFuel(pumpID, amnt);
-        }
-
-        //initial setup for demo, should be called from either UI or main
+        //initial setup for demo, should be called from main
         public void openStore()
         {
+            register.employeeLogin(employees[1]);
             return;
         }
     }

@@ -11,23 +11,24 @@ namespace gasPumpProject
     {
         public Store store;
         PumpState state;
-        bool inUse;
+        public bool inUse { get; set; }
         public float prepaid { get; set; }
         FuelTank[] tankStatus = new FuelTank[3];
 
-        public void customerUP()
+        public void customerUP(int paymentType, int typeOfFuel, float amount)
         {
-            state.usePump();
+            //if credit or debit were used to operate the pump
+            if(paymentType != 0)
+                state.usePump(paymentType, typeOfFuel, amount);
+            //else, it's a cash payment, the register needs to be involved
+            else
+                store.register.payForFuel(this, amount);
         }
 
         public void employeeUP()
         {
-
-        }
-
-        public void usePump()
-        {
-
+            setState((int)pumpState.diagnostics);
+            state.usePump();
         }
 
         public void setTankStatusGas(float amount, int type)
@@ -50,13 +51,13 @@ namespace gasPumpProject
             switch (pumpState)
             {
                 case (int)gasPumpProject.pumpState.card :
-                    state = new CardPay();
+                    state = new CardPay(this);
                     break;
                 case (int)gasPumpProject.pumpState.cash:
-                    state = new Prepay();
+                    state = new Prepay(this);
                     break;
                 case (int)gasPumpProject.pumpState.diagnostics:
-                    state = new Diagnostic();
+                    state = new Diagnostic(this);
                     break;
             }
             return;
