@@ -10,14 +10,19 @@ namespace gasPumpProject
     {
         Store store;
 
-        public void customerOrEmployee()
+        public UI(Store targetStore)
+        {
+            store = targetStore;
+        }
+
+        public void start()
         {
             //Decide if user is using system as a customer or an employee
             System.Console.WriteLine("Are you a customer or an employee (select by number)?");
-            System.Console.WriteLine("1. Customer");
-            System.Console.WriteLine("2. Employee");
+            System.Console.WriteLine("0. Customer");
+            System.Console.WriteLine("1. Employee");
             bool isEmployee;
-            if (Int32.Parse(Console.ReadLine()) == 2)
+            if (Int32.Parse(Console.ReadLine()) == 1)
                 isEmployee = true;
             else
                 isEmployee = false;
@@ -25,9 +30,9 @@ namespace gasPumpProject
             if (isEmployee)
             {
                 Console.WriteLine("Would you like to work the register or diagnose pumps?");
-                Console.WriteLine("1. Register");
-                Console.WriteLine("2. Pumps");
-                if (Int32.Parse(Console.ReadLine()) == 2)
+                Console.WriteLine("0. Register");
+                Console.WriteLine("1. Pumps");
+                if (Int32.Parse(Console.ReadLine()) == 1)
                     diagnosePumps();
                 else
                     loginToRegister();
@@ -46,11 +51,12 @@ namespace gasPumpProject
                 if (store.pumps[i].inUse == false)
                 {
                     buyGas(i);
+                    return;
                 }
             }
         }
         
-        public void buyGas(int pumpNumber)
+        private void buyGas(int pumpNumber)
         {
             int paymentType = 0, fuelType = 0; //payment checks if the user is using credit, debit or cash
             //fuel type check for which type of gas will be used and is geting the item from the fuelTank array
@@ -64,6 +70,7 @@ namespace gasPumpProject
             else
                 amount = getPayAmount();
             store.pumps[pumpNumber].customerUP(paymentType, fuelType, amount);
+            Console.ReadLine();
         }
 
         private int payType()
@@ -78,7 +85,7 @@ namespace gasPumpProject
         private int gasSelect()
         {
             int typeOfGas;
-            Console.Out.WriteLine("Enter the type of gas you would like (1 for regular, 2 for premium, 3 for super): ");
+            Console.Out.WriteLine("Enter the type of gas you would like (0 for regular, 1 for premium, 2 for super): ");
             typeOfGas = Convert.ToInt32(Console.ReadLine());
             return typeOfGas;
         }
@@ -102,14 +109,16 @@ namespace gasPumpProject
         //user is exploring the system as an employee, they have run the pump diagnostics
         private void diagnosePumps()
         {
-
+            store.pumps[1].employeeUP();
+            Console.ReadLine();
         }
         //user is exploring the system as an employee, they are attempting to use the register
         private void loginToRegister()
         {
             store.register.employeeLogin(store.employees[2]);
-            store.register.employeeLogout(store.employees[0]);
+            store.register.employeeLogout(store.employees[1]);
             store.register.employeeLogin(store.employees[2]);
+            Console.ReadLine();
         }
     }
 }

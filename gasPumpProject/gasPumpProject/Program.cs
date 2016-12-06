@@ -17,6 +17,10 @@ namespace gasPumpProject
     {
         static void Main(string[] args)
         {
+            Store store = new Store();
+            store.openStore();
+            UI ui = new UI(store);
+            ui.start();
         }
     }
 }

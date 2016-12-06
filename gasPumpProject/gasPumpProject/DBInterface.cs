@@ -52,7 +52,7 @@ namespace gasPumpProject
         {
             for (int i = 0; i < employees.Length; i++)
             {
-                employees[i].employeeID = Int32.Parse(readEmployees.ReadLine());
+                employees[i] = new Employee( Convert.ToInt32(readEmployees.ReadLine()) );
             }
         }
     }

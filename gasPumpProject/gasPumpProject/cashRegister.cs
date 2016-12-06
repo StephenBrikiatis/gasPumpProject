@@ -62,8 +62,8 @@ namespace gasPumpProject
         {
             if (currentUser.employeeID == logout.employeeID)
             {
-                currentUser = null;
                 System.Console.WriteLine("User {0} logged out", currentUser.employeeID);
+                currentUser = null;
             }
             //if someone other than current user attemps to log out print error message
             else

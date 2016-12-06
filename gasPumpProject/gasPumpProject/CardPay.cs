@@ -37,10 +37,15 @@ namespace gasPumpProject
                     cashAmount = 0;
                     break;
             }
-            if(paymentType == 1)
+            if (paymentType == 1)
                 hold = false;
             else
+            {
                 hold = true;
+                Console.WriteLine("Hold Placed");
+            }
+            Console.WriteLine("You bought {0} gallons of gas, for {1} dollars",
+                               amountOfGas, cashAmount);
             amountOfGas = parent.getCurrentGas(typeOfGas) - amountOfGas;
             parent.setTankStatusGas(amountOfGas, typeOfGas);
             parent.store.receivePumpPay(cashAmount, ref hold, (int)pumpState.card);

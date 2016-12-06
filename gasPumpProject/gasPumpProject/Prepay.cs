@@ -15,12 +15,18 @@ namespace gasPumpProject
         }
         public override void usePump()
         {
-            Console.WriteLine("ERR: Wrong State");
+            Console.WriteLine("ERR: Wrong State (Prepay)");
+            parent.setState((int)pumpState.card);
             return;
         }
 
-        public override float usePump(int paymentType, int typeOfGas, float amountOfGas)
+        //in the case of prepay, paymentType is ignored, the amount of gas dispensed is displayed
+        public override float usePump(int paymentType, int typeOfGas, float amount)
         {
+            Console.WriteLine("You paid {0}, you bought {1} gallons of gas",
+                              amount, amount / parent.getPrice(typeOfGas));
+            parent.setState((int)pumpState.card);
+            parent.prepaid = 0;
             return 0;
         }
     }

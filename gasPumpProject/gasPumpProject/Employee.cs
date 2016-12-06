@@ -13,23 +13,23 @@ namespace gasPumpProject
         //keeps track of total employees created
         private static int employees = 0;
 
-        //employee ID
+        //employee ID backing value for custom getter/setter
+        private int EmployeeID;
         public int employeeID 
-        {   get { return employeeID; }
+        {   get { return EmployeeID; }
             set
             {
-                employeeID = value;
-                if(employeeID >= employees)
-                    employees = employeeID;
+                EmployeeID = value;
+                if(EmployeeID >= employees)
+                    employees = EmployeeID;
                 employees++;
             }
         }
 
         //increment number of employees and assign the new employee thier ID
-        public Employee()
+        public Employee(int ID)
         {
-            employees++;
-            employeeID = employees;
+            this.employeeID = ID;
         }
 
     }

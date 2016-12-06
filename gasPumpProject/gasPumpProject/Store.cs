@@ -11,6 +11,7 @@ namespace gasPumpProject
         private int storeID;
         public CashRegister register { get; private set; }
         public FuelPump[] pumps { get; private set; }
+        public FuelTank[] tanks { get; private set; }
         private float currentAccounts { get; set; }
         private DBInterface records { get; set; }
         public Employee[] employees { get; private set; }
@@ -19,9 +20,15 @@ namespace gasPumpProject
         {
             storeID = 555;
             register = new CashRegister(this);
+            tanks = new FuelTank[3];
+            for (int i = 0; i < 3; i++)
+                tanks[i] = new FuelTank(i);
             pumps = new FuelPump[3];
+            for (int i = 1; i < 4; i++)
+                pumps[i - 1] = new FuelPump(this, tanks);
             currentAccounts = 0;
             records = DBInterface.Instance;
+            employees = new Employee[3];
             records.getEmployees(employees);
         }
 
@@ -32,7 +39,10 @@ namespace gasPumpProject
         {
             currentAccounts += amnt;
             if (hold)
+            {
                 hold = false;
+                Console.WriteLine("Hold Removed");
+            }
 
             records.transaction(amnt, currentAccounts, transactionType);
             return (int)function.success;
