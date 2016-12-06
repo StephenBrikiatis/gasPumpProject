@@ -10,10 +10,10 @@ namespace gasPumpProject
     {
         int storeID;
         cashRegister register;
-        FuelPump[] pumps;
+        FuelPump[] pumps = new FuelPump[2];
         float currentAccounts;
         DBInterface records;
-        Employee[] employees;
+        Employee[] employees = new Employee[5];
 
         public int receivePumpPay(float amnt, bool hold, int transactionType)
         {
@@ -21,6 +21,11 @@ namespace gasPumpProject
             if (hold)
                 hold = false;
             
+        }
+
+        public FuelPump getPump(int pumpNumber)
+        {
+            return pumps[pumpNumber];
         }
     }
 }

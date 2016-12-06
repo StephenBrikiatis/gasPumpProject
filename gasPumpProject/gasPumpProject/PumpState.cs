@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    abstract class PumpState
+    interface PumpState
     {
-
-        public abstract void usePump()
+        void usePump();
     }
 }

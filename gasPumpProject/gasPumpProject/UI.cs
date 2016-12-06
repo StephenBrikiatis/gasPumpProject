@@ -10,7 +10,7 @@ namespace gasPumpProject
     {
         Store store;
         
-        public void payWithCard(int pumpNumber)
+        public void payWithCard(int pumpNumber, )
         {
             int paymentType = 0, fuelType = 0; //payment checks if the user is using debit or credit
             //fuel type check for which type of gas will be used and is geting the item from the fuelTank array
@@ -20,7 +20,7 @@ namespace gasPumpProject
             paymentType = cardType();
             fuelType = gasSelect();
             amountOfGas = getGasAmount();
-            store.pumps[pumpNumber].
+            store.getPump(pumpNumber).customerUP();
         }
 
         public int cardType()

@@ -9,10 +9,10 @@ namespace gasPumpProject
     class CardPay
     {
         FuelPump parent;
-        public int usePump(int paymentType, int typeOfGas, float amountOfGas)
+        public int usePump(int typeOfPayment, int typeOfGas, float amountOfGas)
         {
             bool hold;
-
+            float cashAmount =0;
                 switch (typeOfGas)
                 {
                     case 1:
@@ -26,7 +26,6 @@ namespace gasPumpProject
                         break;
                     default:
                         Console.Out.WriteLine("That is not a type of fuel, choose a type of gas.");
-                        loopEnd = false;
                         break;
                 }
 
