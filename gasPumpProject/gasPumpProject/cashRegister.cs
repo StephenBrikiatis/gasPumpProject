@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //allows for prepay of fuel, employee login and logout
 namespace gasPumpProject
 {
-    class cashRegister
+    class CashRegister
     {
         private int registerID { get; set; }
 
@@ -25,7 +25,7 @@ namespace gasPumpProject
         //called from Store.prePayPump() when a customer wants to pay cash for gas
         //updates cash in register, pump's prepay value, and state of pump (cash mode)
         //alerts store to the transaction so store can update its records
-        public int payForFuel(int targetPump, float paymentAmnt)
+        public int payForFuel(FuelPump targetPump, float paymentAmnt)
         {
             //no account hold with cash payments
             bool hold = false;
@@ -37,8 +37,8 @@ namespace gasPumpProject
             //alert store to transaction so database can be updated
             store.receivePumpPay(paymentAmnt, ref hold, (int)pumpState.cash);
             //set the state of the chosen pump and the prepayment amount
-            store.pumps[targetPump].prepaid = paymentAmnt;
-            store.pumps[targetPump].setState( (int)pumpState.cash );
+            targetPump.prepaid = paymentAmnt;
+            targetPump.setState( (int)pumpState.cash );
             return (int)function.success;
         }
 
@@ -53,6 +53,7 @@ namespace gasPumpProject
                 return;
             }
             currentUser = login;
+            System.Console.WriteLine("User {0} logged in", currentUser.employeeID);
             return;
         }
         //allows the most recent user to log out
@@ -60,11 +61,24 @@ namespace gasPumpProject
         public void employeeLogout(Employee logout)
         {
             if (currentUser.employeeID == logout.employeeID)
+            {
+                System.Console.WriteLine("User {0} logged out", currentUser.employeeID);
                 currentUser = null;
+            }
             //if someone other than current user attemps to log out print error message
             else
                 System.Console.WriteLine("Only the current user can log out");
             return;
+        }
+        //set store based on which store created the register
+        //register ID and start of day cash are fixed
+        //our prototype assumes 1 register and 1 day of operations
+        public CashRegister(Store parentStore)
+        {
+            store = parentStore;
+            registerID = 3312000;
+            currentCash = 200;
+            currentUser = null;
         }
     }
 }

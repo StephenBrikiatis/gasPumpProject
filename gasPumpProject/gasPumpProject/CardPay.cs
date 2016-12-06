@@ -6,44 +6,54 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class CardPay
+    class CardPay : PumpState
     {
         FuelPump parent;
-        public int usePump(int paymentType, int typeOfGas, float amountOfGas)
+
+        //implemented to satisfy abstract class requirements
+        //should only be called if there is an error
+        public override void usePump()
+        {
+            Console.WriteLine("ERR: Wrong State");
+            return;
+        }
+        public override float usePump(int paymentType, int typeOfGas, float amountOfGas)
         {
             bool hold;
-
-                switch (typeOfGas)
-                {
-                    case 1:
-                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
-                        break;
-                    case 2:
-                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
-                        break;
-                    case 3:
-                        cashAmount = amountOfGas * parent.getPrice(typeOfGas);
-                        break;
-                    default:
-                        Console.Out.WriteLine("That is not a type of fuel, choose a type of gas.");
-                        loopEnd = false;
-                        break;
-                }
-
-            if(typeOfPayment == 1)
+            float cashAmount;
+            switch (typeOfGas)
             {
-                hold = false;
+                case 1:
+                    cashAmount = amountOfGas * parent.getPrice(typeOfGas);
+                    break;
+                case 2:
+                    cashAmount = amountOfGas * parent.getPrice(typeOfGas);
+                    break;
+                case 3:
+                    cashAmount = amountOfGas * parent.getPrice(typeOfGas);
+                    break;
+                default:
+                    Console.Out.WriteLine("That is not a type of fuel, choose a type of gas.");
+                    cashAmount = 0;
+                    break;
             }
+            if (paymentType == 1)
+                hold = false;
             else
             {
                 hold = true;
+                Console.WriteLine("Hold Placed");
             }
-
+            Console.WriteLine("You bought {0} gallons of gas, for {1} dollars",
+                               amountOfGas, cashAmount);
             amountOfGas = parent.getCurrentGas(typeOfGas) - amountOfGas;
-
             parent.setTankStatusGas(amountOfGas, typeOfGas);
-            parent.store.recievePumpPay(cashAmount, ref hold, pumpState.card);
+            parent.store.receivePumpPay(cashAmount, ref hold, (int)pumpState.card);
             return 0;
+        }
+        public CardPay(FuelPump pump)
+        {
+            parent = pump;
         }
     }
 }

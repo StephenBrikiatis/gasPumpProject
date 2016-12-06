@@ -10,5 +10,6 @@ namespace gasPumpProject
     {
 
         public abstract void usePump();
+        public abstract float usePump(int a, int b, float c);
     }
 }

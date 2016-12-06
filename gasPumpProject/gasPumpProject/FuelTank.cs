@@ -8,11 +8,18 @@ namespace gasPumpProject
 {
     class FuelTank
     {
-        string fuelType;
+        int fuelType;
         float pricePerGal;
         float galsRemaining;
 
-        public void setFuelType(string type)
+        public FuelTank(int type)
+        {
+            fuelType = type;
+            pricePerGal = (float)( 3.0 + (type * .25) );
+            galsRemaining = 3000;
+        }
+
+        public void setFuelType(int type)
         {
             fuelType = type;
         }
@@ -27,7 +34,7 @@ namespace gasPumpProject
             galsRemaining = gallon;
         }
 
-        public string getType()
+        public int getType()
         {
             return fuelType;
         }
