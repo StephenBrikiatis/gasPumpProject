@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class CardPay
+    class CardPay : PumpState
     {
         FuelPump parent;
         public int usePump(int paymentType, int typeOfGas, float amountOfGas)

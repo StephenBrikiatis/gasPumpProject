@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class Diagnostic
+    class Diagnostic : PumpState
     {
     }
 }

@@ -12,7 +12,7 @@ namespace gasPumpProject
         public Store store;
         PumpState state;
         bool inUse;
-        int prepaid;
+        public float prepaid { get; set; }
         FuelTank[] tankStatus = new FuelTank[3];
 
         public void customerUP()
@@ -43,6 +43,23 @@ namespace gasPumpProject
         public float getPrice(int tank)
         {
             return tankStatus[tank].getPrice();
+        }
+
+        public void setState(int pumpState)
+        {
+            switch (pumpState)
+            {
+                case (int)gasPumpProject.pumpState.card :
+                    state = new CardPay();
+                    break;
+                case (int)gasPumpProject.pumpState.cash:
+                    state = new Prepay();
+                    break;
+                case (int)gasPumpProject.pumpState.diagnostics:
+                    state = new Diagnostic();
+                    break;
+            }
+            return;
         }
     }
 }

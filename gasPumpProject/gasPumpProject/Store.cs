@@ -9,11 +9,21 @@ namespace gasPumpProject
     class Store
     {
         private int storeID;
-        public cashRegister register { get; private set; }
+        public CashRegister register { get; private set; }
         public FuelPump[] pumps { get; private set; }
         private float currentAccounts { get; set; }
         private DBInterface records { get; set; }
         public Employee[] employees { get; private set; }
+
+        public Store()
+        {
+            storeID = 555;
+            register = new CashRegister(this);
+            pumps = new FuelPump[3];
+            currentAccounts = 0;
+            records = DBInterface.Instance;
+            records.getEmployees(employees);
+        }
 
         //function to receive pump payment either in cash or with card
         //hold is true if debit card was used and there is a hold on the account
@@ -23,11 +33,8 @@ namespace gasPumpProject
             currentAccounts += amnt;
             if (hold)
                 hold = false;
-            if (transactionType == (int)pumpState.card)
-                DBInterface.cardTransaction(amnt, currentAccounts);
-            else
-                DBInterface.cashTransaction(amnt, currentAccounts);
 
+            records.transaction(amnt, currentAccounts, transactionType);
             return (int)function.success;
         }
 
@@ -37,9 +44,9 @@ namespace gasPumpProject
         }
 
         //initial setup for demo, should be called from either UI or main
-        public void openStore
+        public void openStore()
         {
-
+            return;
         }
     }
 }

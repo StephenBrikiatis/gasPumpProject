@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace gasPumpProject
 {
-    class Prepay
+    class Prepay : PumpState
     {
         public void usePump()
         {

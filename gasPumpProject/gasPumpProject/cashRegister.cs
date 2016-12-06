@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 //allows for prepay of fuel, employee login and logout
 namespace gasPumpProject
 {
-    class cashRegister
+    class CashRegister
     {
         private int registerID { get; set; }
 
@@ -65,6 +65,16 @@ namespace gasPumpProject
             else
                 System.Console.WriteLine("Only the current user can log out");
             return;
+        }
+        //set store based on which store created the register
+        //register ID and start of day cash are fixed
+        //our prototype assumes 1 register and 1 day of operations
+        public CashRegister(Store parentStore)
+        {
+            store = parentStore;
+            registerID = 3312000;
+            currentCash = 200;
+            currentUser = null;
         }
     }
 }

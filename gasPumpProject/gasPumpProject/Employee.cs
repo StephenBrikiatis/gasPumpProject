@@ -14,7 +14,16 @@ namespace gasPumpProject
         private static int employees = 0;
 
         //employee ID
-        public int employeeID { get; private set; }
+        public int employeeID 
+        {   get { return employeeID; }
+            set
+            {
+                employeeID = value;
+                if(employeeID >= employees)
+                    employees = employeeID;
+                employees++;
+            }
+        }
 
         //increment number of employees and assign the new employee thier ID
         public Employee()
