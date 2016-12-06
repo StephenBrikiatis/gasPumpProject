@@ -54,7 +54,7 @@ namespace gasPumpProject
             amountOfGas = parent.getCurrentGas(typeOfGas) - amountOfGas;
 
             parent.setTankStatusGas(amountOfGas, typeOfGas);
-            parent.store.recievePumpPay(cashAmount, ref hold);
+            parent.store.recievePumpPay(cashAmount, ref hold, pumpState.card);
             return 0;
         }
     }
