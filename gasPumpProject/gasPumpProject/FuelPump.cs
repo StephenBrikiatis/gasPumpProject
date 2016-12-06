@@ -17,7 +17,7 @@ namespace gasPumpProject
 
         public void customerUP()
         {
-
+            state.usePump();
         }
 
         public void employeeUP()

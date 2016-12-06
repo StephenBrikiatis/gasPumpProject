@@ -9,22 +9,10 @@ namespace gasPumpProject
     class CardPay
     {
         FuelPump parent;
-        public int usePump()
+        public int usePump(int paymentType, int typeOfGas, float amountOfGas)
         {
-            float cashAmount = 0;
-            float amountOfGas =0;
-            int typeOfGas =0, typeOfPayment = 0;
-            bool loopEnd = false, hold;
+            bool hold;
 
-            while(loopEnd == false)
-            {
-                loopEnd = true;
-                Console.Out.WriteLine("Are you using a credit or debit card (1 for credit, 2 for debit):");
-                typeOfPayment = Console.Read();
-                Console.Out.WriteLine("Enter the type of gas you would like (1 for regular, 2 for premium, 3 for super): ");
-                typeOfGas = Console.Read();
-                Console.Out.WriteLine("Enter the number of gallons of gas you want to pay for: ");
-                amountOfGas = Console.Read();
                 switch (typeOfGas)
                 {
                     case 1:
@@ -41,7 +29,7 @@ namespace gasPumpProject
                         loopEnd = false;
                         break;
                 }
-            }
+
             if(typeOfPayment == 1)
             {
                 hold = false;
