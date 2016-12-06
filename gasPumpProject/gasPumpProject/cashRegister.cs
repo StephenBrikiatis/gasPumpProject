@@ -12,16 +12,20 @@ namespace gasPumpProject
     class cashRegister
     {
         private int registerID { get; set; }
+
         //cash in this register
         private float currentCash { get; set; }
+
         //0 if nobody is logged in
         private Employee currentUser;
+
         //store that owns this register
         private Store store;
+
         //called from Store.prePayPump() when a customer wants to pay cash for gas
         //updates cash in register, pump's prepay value, and state of pump (cash mode)
         //alerts store to the transaction so store can update its records
-        public int payForFuel(int targetPump, int paymentAmnt)
+        public int payForFuel(int targetPump, float paymentAmnt)
         {
             //no account hold with cash payments
             bool hold = false;
@@ -33,8 +37,8 @@ namespace gasPumpProject
             //alert store to transaction so database can be updated
             store.receivePumpPay(paymentAmnt, ref hold, (int)pumpState.cash);
             //set the state of the chosen pump and the prepayment amount
-            store.pumps[targetPump].prepaid.set(paymentAmnt);
-            store.pumps[targetPump].setState(1);
+            store.pumps[targetPump].prepaid = paymentAmnt;
+            store.pumps[targetPump].setState( (int)pumpState.cash );
             return (int)function.success;
         }
 
